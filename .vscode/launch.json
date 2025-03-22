@@ -10,11 +10,19 @@
             "request": "launch",
             "module": "flask",
             "env": {
-                "FLASK_APP": "app.webapp"
+                "FLASK_APP": "app.webapp",
+                "FLASK_DEBUG": "1",
+                "FLASK_ENV": "development"
+            },
+            "autoReload": {
+                "enable": true,
+                "pattern": [
+                    "**/*.py"
+                ]
             },
             "args": [
                 "run",
-                "--no-debugger"
+                "--debug"
             ],
             "jinja": true
         }

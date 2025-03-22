@@ -1,9 +1,16 @@
+:root {
+    --text-color: #65ff7d;
+    --glow-color: #00ff26;
+    --background-color: #001e02; 
+}
+
 body {
-    background-color: #001e02;
-    margin: 0;
     font-family: 'Sixtyfour', sans-serif;
-    color: #65ff7d;
-    text-shadow: 0px 0px 2px #00ff26;
+    color: var(--text-color);
+    font-size: 16px;
+    text-shadow: 0px 0px 2px var(--glow-color);
+    margin: 0;
+    background-color: var(--background-color);
 }
 
 .screen-border {
@@ -34,6 +41,7 @@ body {
 }
 
 .ascii-heading {
+    font-size: 1.2em;
     margin: 0 0 36px 0;
 }
 
@@ -44,6 +52,97 @@ body {
     margin: 75px;
     display: flex;
     flex-direction: column;
+}
+
+.task-input {
+    display: grid;
+    grid-template-columns: max-content max-content max-content;
+    gap: 1em;
+    align-items: center;
+}
+
+.task-container {
+    display: grid;
+    /* 4 Columns that are the minimum width to contain the content without wrapping */
+    grid-template-columns: max-content max-content max-content max-content;
+    gap: 1em;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.task {
+    display: grid;
+    grid-template-columns: 1em auto;
+    gap: 1em;
+    font-size: 1.4em;
+}
+
+input {
+    font-family: 'Sixtyfour', sans-serif;
+    color: var(--text-color);
+    caret-color: var(--text-color);
+    caret-shape: block;
+    padding: 8px 16px;
+    outline: 1px solid var(--text-color);
+    border: none;
+    border-radius: 2px;
+    background-color: var(--background-color);
+    box-shadow: 0px 0px 2px var(--glow-color),
+                0px 0px 2px inset var(--glow-color);
+}
+
+button {    
+    font-family: 'Sixtyfour', sans-serif;
+    color: var(--text-color);
+    text-shadow: 0px 0px 2px var(--glow-color);
+    padding: 8px 32px;
+    border: 1px solid var(--text-color);
+    border-radius: 2px;
+    cursor: pointer;
+    background-color: var(--background-color);
+    box-shadow: 0px 0px 2px var(--glow-color),
+                0px 0px 2px inset var(--glow-color);
+}
+
+/* Custom Checkbox Styling - https://moderncss.dev/pure-css-custom-checkbox-style/ */
+input[type="checkbox"] {
+    appearance: none;
+    font-size: 16px !important;
+    font: inherit;
+    color: currentColor;
+    margin: 0;
+    padding: 4px;
+    width: 1.15em;
+    height: 1.15em;
+    display: grid;
+    place-content: center;
+    transform: translateY(0.2em);
+    background-color: var(--background-color);
+    box-shadow: 0px 0px 2px var(--glow-color),
+                0px 0px 2px inset var(--glow-color);
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    border-radius: 0.125em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: 0px 0px 2px var(--glow-color),
+                inset 1em 1em var(--text-color);
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+a {
+    color: var(--text-color);
+}
+
+a:visited {
+    color: var(--text-color);
 }
 
 footer {
