@@ -3,16 +3,8 @@
     ToDo App
 {% endblock %}
 {% block content %}  
-<pre class="ascii-heading">
- __      __                  _   _              _______               
- \ \    / /                 | | | |            |__   __|              
-  \ \  / /    __ _   _   _  | | | |_   ______     | |      ___    ___ 
-   \ \/ /    / _` | | | | | | | | __| |______|    | |     / _ \  / __|
-    \  /    | (_| | | |_| | | | | |_              | |    |  __/ | (__ 
-     \/      \__,_|  \__,_| |_|  \__|             |_|     \___|  \___|
-</pre>                                                                      
-                                                                      
-
+                                                                  
+                                                            
 <p>
     Due to repeated attempts to obtain protected Vault-Tec information, the following security procedures have now been
     instituted:<br><br>
@@ -27,15 +19,18 @@
 </p>
 
 <h2>ToDo List</h2>
-<form action="{{ url_for("add") }}" method="post">
-    <input type="text" name="todo">
+<form action="{{ url_for('add') }}" method="post">
+    <input type="text" name="task">
     <button type="submit">Add Task</button>
 </form>
 <ul>
-    {% for todo in todo_list %}
+    {% for task in todo_list %}
     <li>
-        {{ todo['task'] }}
-        <a href="{{ url_for( "delete", index=loop.index0 )}}">Delete</a>
+        <input type="checkbox" name="done" {% if task['done'] %} checked {% endif %} disabled>
+        <span {% if task['done'] %} style="text-decoration: line-through;" {% endif %}>{{ task['task'] }}</span>
+        <a href="{{ url_for( 'done', index=loop.index0 ) }}">Done</a>
+        <a href="{{ url_for( 'edit', index=loop.index0 ) }}">Edit</a>
+        <a href="{{ url_for( 'delete', index=loop.index0 ) }}">Delete</a>
     </li>
     {% endfor %}
 </ul>
